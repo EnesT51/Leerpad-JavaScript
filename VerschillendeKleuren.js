@@ -1,13 +1,10 @@
-function ChangeButtonColor(buttonId){
-   const ColorList = ["Red", "Purple", "Blue", "Black"];
-   var x = document.getElementById(buttonId);
-   x.style.backgroundColor = ColorList[index];
-   index ++;
-   if(index === 5 && x.id === buttonId){
-      x.remove();
-      index = 0;
-   }
+const ColorList = ["Black"];
+var ColorCoise = prompt("hoeveel kleuren wil je toevoegen?: ");
+for(let i = 0; i < ColorCoise; i ++){
+   var ColorType = prompt(`wat is je ${i + 1} kleur?`);
+   ColorList.unshift(ColorType);
 }
+
 var index = 0;
 var container = document.getElementById("Container");
 for(let i = 1; i <= 30; i++){
@@ -17,7 +14,7 @@ for(let i = 1; i <= 30; i++){
    Button.style.width = '100px';
    Button.style.height = '100px';
    Button.style.fontSize = "50px";
-   Button.style.backgroundColor = "green";
+   Button.style.backgroundColor = 'green';
    Button.id = i;
    Button.appendChild(node);
    container.appendChild(Button);
@@ -26,6 +23,15 @@ for(let i = 1; i <= 30; i++){
       const newline = document.createElement('br');
       container.appendChild(newline);
    }
+}
+function ChangeButtonColor(buttonId){
+   var x = document.getElementById(buttonId);
+   x.style.backgroundColor = ColorList[index];
+   index ++;
+   if(index % (ColorList.length + 1) === 0){
+      x.remove();
+      index = 0;
+   }  
 }
 const Container = () => { 
    container.style.display = 'inline-block';
