@@ -1,10 +1,13 @@
-const ColorList = ["Black"];
-var ColorCoise = prompt("hoeveel kleuren wil je toevoegen?: ");
-for(let i = 0; i < ColorCoise; i ++){
-   var ColorType = prompt(`wat is je ${i + 1} kleur?`);
-   ColorList.unshift(ColorType);
+function ChangeButtonColor(buttonId){
+   const ColorList = ["Red","Purple","Blue","Black"];
+   var x = document.getElementById(buttonId);
+   x.style.backgroundColor = ColorList[index];
+   index ++;
+   if(index % (ColorList.length + 1) === 0){
+      x.remove();
+      index = 0;
+   }
 }
-
 var index = 0;
 var container = document.getElementById("Container");
 for(let i = 1; i <= 30; i++){
@@ -24,15 +27,8 @@ for(let i = 1; i <= 30; i++){
       container.appendChild(newline);
    }
 }
-function ChangeButtonColor(buttonId){
-   var x = document.getElementById(buttonId);
-   x.style.backgroundColor = ColorList[index];
-   index ++;
-   if(index % (ColorList.length + 1) === 0){
-      x.remove();
-      index = 0;
-   }  
-}
+
+
 const Container = () => { 
    container.style.display = 'inline-block';
    container.style.padding = '10px';
