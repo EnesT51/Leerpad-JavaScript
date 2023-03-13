@@ -1,12 +1,14 @@
-const ColorList = ["Black"];
-var ColorCoise = prompt("hoeveel kleuren wil je toevoegen?: ");
-for(let i = 0; i < ColorCoise; i ++){
-   var ColorType = prompt(`wat is je ${i + 1} kleur?`);
-   ColorList.unshift(ColorType);
-}
-
-var index = 0;
 var container = document.getElementById("Container");
+
+function Colors(){
+   const ColorList = ["green" ,"black"];
+   var ColorCoise = prompt("hoeveel kleuren wil je toevoegen?: ");
+   for(let i = 0; i < ColorCoise; i ++){
+      var ColorType = prompt(`wat is je ${i + 1} kleur?`);
+      ColorList.splice(i + 1, 0 ,ColorType);
+   }
+   return ColorList;
+}
 for(let i = 1; i <= 30; i++){
    var Button = document.createElement('button');
    var node = document.createTextNode(i);
@@ -18,20 +20,21 @@ for(let i = 1; i <= 30; i++){
    Button.id = i;
    Button.appendChild(node);
    container.appendChild(Button);
-   Button.addEventListener('click', ChangeButtonColor.bind(undefined, Button.id));
+   Button.addEventListener('click', ChangeButtonColor);
    if(i % 5 === 0){
       const newline = document.createElement('br');
       container.appendChild(newline);
    }
 }
-function ChangeButtonColor(buttonId){
-   var x = document.getElementById(buttonId);
-   x.style.backgroundColor = ColorList[index];
+function ChangeButtonColor(){
+   var ColorIndex = colors.indexOf(this.style.backgroundColor);
+   var index = ColorIndex;
+   this.style.backgroundColor = colors[ColorIndex + 1];
    index ++;
-   if(index % (ColorList.length + 1) === 0){
-      x.remove();
+   if(index % (colors.length) === 0){
+      this.remove();
       index = 0;
-   }  
+   }
 }
 const Container = () => { 
    container.style.display = 'inline-block';
@@ -39,5 +42,7 @@ const Container = () => {
    container.style.backgroundColor = "gray";
    container.style.marginLeft = window.innerWidth / 2 - container.clientWidth / 2 + "px";
 };
+var colors = Colors();
+console.log(colors);
 Container();
 window.addEventListener('resize', Container);
