@@ -18,7 +18,6 @@ for(let i = 1; i <= 30; i++){
    Button.style.height = '100px';
    Button.style.fontSize = "50px";
    Button.style.backgroundColor = 'green';
-   Button.id = i;
    Button.appendChild(node);
    container.appendChild(Button);
    Button.addEventListener('click', ChangeButtonColor);

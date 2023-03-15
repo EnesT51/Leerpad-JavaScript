@@ -9,23 +9,27 @@ function Colors(){
    }
    return ColorList;
 }
-for(let i = 1; i <= 30; i++){
-   var Button = document.createElement('button');
-   var node = document.createTextNode(i);
-   Button.style.margin = '5px';
-   Button.style.width = '100px';
-   Button.style.height = '100px';
-   Button.style.fontSize = "50px";
-   Button.style.backgroundColor = 'green';
-   Button.id = i;
-   Button.appendChild(node);
-   container.appendChild(Button);
-   Button.addEventListener('click', ChangeButtonColor);
-   if(i % 5 === 0){
-      const newline = document.createElement('br');
-      container.appendChild(newline);
+function CreateButtons(){
+   
+   for(let i = 1; i <= 30; i++){
+      var Button = document.createElement('button');
+      var node = document.createTextNode(i);
+      Button.style.margin = '5px';
+      Button.style.width = '100px';
+      Button.style.height = '100px';
+      Button.style.fontSize = "50px";
+      Button.style.backgroundColor = 'green';
+      Button.id = i;
+      Button.appendChild(node);
+      container.appendChild(Button);
+      Button.addEventListener('click', ChangeButtonColor);
+      if(i % 5 === 0){
+         const newline = document.createElement('br');
+         container.appendChild(newline);
+      }
    }
 }
+
 function ChangeButtonColor(){
    var ColorIndex = colors.indexOf(this.style.backgroundColor);
    var index = ColorIndex;
@@ -43,6 +47,6 @@ const Container = () => {
    container.style.marginLeft = window.innerWidth / 2 - container.clientWidth / 2 + "px";
 };
 var colors = Colors();
-console.log(colors);
+CreateButtons();
 Container();
 window.addEventListener('resize', Container);
