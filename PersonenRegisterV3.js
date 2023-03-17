@@ -1,5 +1,8 @@
 let Container = document.getElementById('Container');
 let DisplayInfo = document.getElementById('displayInfo');
+let h2 = document.createElement('h2');
+let node = document.createTextNode('Personen');
+h2.appendChild(node);
 let button = document.createElement('button');
 button.id = 'button';
 let butonText = document.createTextNode('Filter');
@@ -7,6 +10,7 @@ let InputText = document.createElement('input');
 
 InputText.setAttribute('id','input');
 button.appendChild(butonText);
+Container.appendChild(h2);
 Container.appendChild(InputText);
 Container.appendChild(button);
 
@@ -41,4 +45,5 @@ async function ExtractInfo(info){
    };
 };
 var Info = GetJson();
+ExtractInfo(Info);
 button.addEventListener('click', ExtractInfo.bind(undefined, Info));
